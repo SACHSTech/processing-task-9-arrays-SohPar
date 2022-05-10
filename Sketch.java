@@ -7,7 +7,7 @@ float[] circleY = new float[50];
 float[] snow = new float[50];
 float[] mousePositionsX = new float[25];
 float[] mousePositionsY = new float[25];
-int speed = 4;
+int speed = 3;
 int num = 25;
 int index = 0;
 
@@ -16,7 +16,7 @@ int index = 0;
    */
   public void settings() {
 	// put your size call here
-    size(300, 300);
+    size(400, 400);
   }
 
   /** 
@@ -41,7 +41,7 @@ int index = 0;
     background(19, 24, 98);
 
  for (int circleX = 0; circleX < 50; circleX++) {
-  ellipse(circleX*8, circleY[circleX], 15, 15);
+  ellipse(circleX*8, circleY[circleX], 20, 20);
 }
 
 for (int i = 0; i < 50; i++) {
@@ -57,23 +57,25 @@ for (int i = 0; i < 50; i++) {
   rect(i*8, 400-snow[i], 8, 400);
 }
 
-// Moving the object around the snowfall with mouse
+// Move the object around the snowfall with mouse
 mousePositionsX[index] = mouseX;
 mousePositionsY[index] = mouseY;
 index = (index + 1) % num;
 for (int i = 0; i < 25; i++) {
   int pos = (index + i) % num;
   ellipse(mousePositionsX[pos], mousePositionsY[pos], i, i);
+  speed = 1;
+
 }
 }
 
   // Control Speed of The SnowFall
   public void keyPressed() {
-    if (keyCode == UP) {
+    if (keyCode == DOWN) {
       speed = 5;
     }
-    if (keyCode == DOWN) {
-      speed = 2;
+    if (keyCode == UP) {
+      speed = 1;
     }
   }
 }
